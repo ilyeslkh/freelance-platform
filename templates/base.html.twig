@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Freelance Platform{% endblock %}</title>
+    <link href="{{ asset('build/app.css') }}" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-white shadow">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold"><a href="{{ path('home') }}">Freelance Platform</a></h1>
+            <nav>
+                <a href="{{ path('service_list') }}" class="px-4">Services</a>
+                <a href="{{ path('job_list') }}" class="px-4">Annonces</a>
+                <a href="{{ path('dashboard') }}" class="px-4">Mon Compte</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container mx-auto px-4 py-6">
+        {% block body %}{% endblock %}
+    </main>
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            &copy; 2025 Freelance Platform
+        </div>
+    </footer>
+</body>
+</html>
