@@ -1,0 +1,31 @@
+# 1. Utilisation de l'image PHP avec Apache
+FROM php:8.2-fpm
+
+# 2. Installation des extensions PHP nécessaires
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    libzip-dev \
+    zip \
+    unzip \
+    git \
+    curl \
+    && docker-php-ext-install pdo pdo_mysql zip
+
+# 3. Installation de Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# 4. Copie du projet dans le conteneur
+WORKDIR /var/www/html
+COPY . /var/www/html
+
+# 5. Installation des dépendances PHP
+RUN composer install --no-dev --optimize-autoloader
+
+# 6. Configuration des permissions
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 775 /var/www/html/var
+
+# 7. Exposition du port PHP
+EXPOSE 9000
+
+CMD ["php-fpm"]

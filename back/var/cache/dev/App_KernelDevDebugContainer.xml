@@ -422,6 +422,9 @@
       <argument type="service" id="security.helper"/>
       <argument type="service" id="router.default"/>
     </service>
+    <service id="App\Serializer\JobNormalizer" class="App\Serializer\JobNormalizer" autowire="true" autoconfigure="true">
+      <tag name="container.error" message="Class &quot;Symfony\Component\Serializer\Normalizer\ContextAwareNormalizerInterface&quot; not found while loading &quot;App\Serializer\JobNormalizer&quot;."/>
+    </service>
     <service id="App\Command\SendTestEmailCommand" class="App\Command\SendTestEmailCommand" autowire="true" autoconfigure="true">
       <tag name="console.command"/>
       <tag name="container.no_preload"/>
@@ -629,6 +632,9 @@
     <service id="App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Serializer\UserNormalizer" class="App\Serializer\UserNormalizer" autowire="true" autoconfigure="true">
+      <tag name="container.error" message="The autoloader expected class &quot;App\Serializer\UserNormalizer&quot; to be defined in file &quot;/home/lekehal/Documents/freelance_projet/freelance-app/back/vendor/composer/../../src/Serializer/UserNormalizer.php&quot;. The file was found but the class was not in it, the class name or namespace probably has a typo."/>
     </service>
     <service id="App\Services\EmailService" class="App\Services\EmailService" autowire="true" autoconfigure="true">
       <argument type="service" id="mailer.mailer"/>

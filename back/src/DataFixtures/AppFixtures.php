@@ -24,7 +24,7 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        // Création des compétences
+        // === Création des compétences ===
         $skills = [];
         $skillNames = ['PHP', 'Symfony', 'JavaScript', 'CSS', 'Design', 'Laravel', 'React', 'VueJS', 'Python', 'Java'];
         foreach ($skillNames as $name) {
@@ -34,7 +34,7 @@ class AppFixtures extends Fixture
             $skills[] = $skill;
         }
 
-        // Création des catégories
+        // === Création des catégories ===
         $categories = [];
         $categoryNames = ['Développement Web', 'Design', 'Marketing', 'Rédaction', 'SEO', 'Photographie', 'E-commerce'];
         foreach ($categoryNames as $name) {
@@ -44,26 +44,29 @@ class AppFixtures extends Fixture
             $categories[] = $category;
         }
 
-        // Création des utilisateurs avec différents rôles
+        // === Création des utilisateurs (avec différents rôles) ===
         $users = [
-            ['email' => 'admin@example.com', 'roles' => ['ROLE_ADMIN'], 'password' => 'adminpass'],
-            ['email' => 'user1@example.com', 'roles' => ['ROLE_USER'], 'password' => 'userpass1'],
-            ['email' => 'user2@example.com', 'roles' => ['ROLE_USER'], 'password' => 'userpass2'],
+            ['email' => 'admin@example.com', 'roles' => ['ROLE_ADMIN'], 'password' => 'adminpass', 'username' => 'Admin'],
+            ['email' => 'user1@example.com', 'roles' => ['ROLE_USER'], 'password' => 'userpass1', 'username' => 'User1'],
+            ['email' => 'user2@example.com', 'roles' => ['ROLE_USER'], 'password' => 'userpass2', 'username' => 'User2'],
+            ['email' => 'banned@example.com', 'roles' => ['ROLE_BANNED'], 'password' => 'bannedpass', 'username' => 'BannedUser'],
         ];
 
         foreach ($users as $userData) {
             $user = new User();
             $user->setEmail($userData['email']);
             $user->setRoles($userData['roles']);
+            $user->setUsername($userData['username']); // Ajout du username
             $user->setPassword($this->passwordHasher->hashPassword($user, $userData['password']));
             $manager->persist($user);
         }
 
-        // Création des freelancers
+        // === Création des freelancers ===
         $freelancers = [];
         for ($i = 1; $i <= 10; $i++) {
             $freelancer = new Freelancer();
             $freelancer->setEmail("freelancer$i@example.com");
+            $freelancer->setUsername("Freelancer$i"); // Ajout du username
             $freelancer->setPassword($this->passwordHasher->hashPassword($freelancer, 'password'));
             $freelancer->setRoles(['ROLE_FREELANCER']);
             $freelancer->setPortfolio("https://portfolio-freelancer$i.example.com");
@@ -72,11 +75,12 @@ class AppFixtures extends Fixture
             $freelancers[] = $freelancer;
         }
 
-        // Création des clients
+        // === Création des clients ===
         $clients = [];
         for ($i = 1; $i <= 5; $i++) {
             $client = new Client();
             $client->setEmail("client$i@example.com");
+            $client->setUsername("Client$i"); // Ajout du username
             $client->setPassword($this->passwordHasher->hashPassword($client, 'password'));
             $client->setRoles(['ROLE_CLIENT']);
             $client->setVerified(true);
@@ -84,7 +88,7 @@ class AppFixtures extends Fixture
             $clients[] = $client;
         }
 
-        // Création des services
+        // === Création des services ===
         $services = [];
         for ($i = 1; $i <= 20; $i++) {
             $service = new Service();
@@ -102,7 +106,7 @@ class AppFixtures extends Fixture
             $services[] = $service;
         }
 
-        // Création des jobs
+        // === Création des jobs ===
         for ($i = 1; $i <= 10; $i++) {
             $job = new Job();
             $job->setTitle("Job $i");
@@ -113,6 +117,7 @@ class AppFixtures extends Fixture
             $manager->persist($job);
         }
 
+        // Sauvegarde en base de données
         $manager->flush();
     }
 }

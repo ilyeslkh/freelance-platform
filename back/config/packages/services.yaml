@@ -37,6 +37,10 @@ services:
     tags:
       - { name: kernel.event_subscriber }
 
+  App\Serializer\JobNormalizer:
+    arguments: ["@serializer.normalizer.object"]
+    tags: ["serializer.normalizer"]
+
   # Autres services de votre application
   App\:
     resource: "../../src/"

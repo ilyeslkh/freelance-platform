@@ -18,6 +18,10 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 class JobController extends AbstractController {
     #[Route('/jobs', name: 'job_list')]
     public function list(JobRepository $jobRepository): Response {
+        // Vérification si l'utilisateur est connecté
+        if (!$this->getUser()) {
+                return $this->redirectToRoute('app_login'); // Redirige vers la page de connexion
+        }
         $jobs = $jobRepository->findAll();
 
         return $this->render('job/list.html.twig', [

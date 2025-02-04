@@ -25,6 +25,11 @@ class ServiceController extends AbstractController
     #[Route('/services', name: 'service_list')]
     public function list(ServiceRepository $serviceRepository, Request $request): Response
     {
+            // Vérification si l'utilisateur est connecté
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('app_login'); // Redirige vers la page de connexion
+        }
+
         $page = max(1, (int) $request->query->get('page', 1)); // Numéro de la page actuelle
         $limit = 6; // Nombre de services par page
 
