@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de Bord{% endblock %}
+
+{% block body %}
+<div class="container mx-auto px-4 py-6">
+    <h1 class="text-3xl font-bold mb-6">Tableau de bord</h1>
+
+    <!-- Section Profil Utilisateur -->
+    <div class="bg-white shadow-md rounded-lg p-6 mb-8">
+        <h2 class="text-xl font-bold mb-4">Profil Utilisateur</h2>
+        <ul class="text-gray-700">
+            <li><strong>Nom d'utilisateur :</strong> {{ user.username }}</li>
+            <li><strong>Email :</strong> {{ user.email }}</li>
+            <li><strong>Rôle(s) :</strong> {{ user.roles|join(', ') }}</li>
+        </ul>
+    </div>
+
+    <!-- Section Réservations des Services Créés -->
+    <div class="bg-white shadow-md rounded-lg p-6 mb-8">
+        <h2 class="text-xl font-bold mb-4">Réservations pour vos services</h2>
+        {% if reservations|length > 0 %}
+            <table class="min-w-full bg-white border border-gray-300">
+                <thead>
+                    <tr class="bg-gray-100 border-b">
+                        <th class="text-left py-2 px-4">Service</th>
+                        <th class="text-left py-2 px-4">Réservé par</th>
+                        <th class="text-left py-2 px-4">Date de réservation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reservation in reservations %}
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="py-2 px-4">{{ reservation.service.title }}</td>
+                            <td class="py-2 px-4">{{ reservation.reservedBy.username }}</td>
+                            <td class="py-2 px-4">{{ reservation.reservedAt|date('d/m/Y H:i') }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="text-gray-600">Aucune réservation pour vos services.</p>
+        {% endif %}
+    </div>
+
+    <!-- Section Services Créés -->
+    <div class="bg-white shadow-md rounded-lg p-6 mb-8">
+        <h2 class="text-xl font-bold mb-4">Vos services créés</h2>
+        {% if createdServices|length > 0 %}
+            <ul class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {% for service in createdServices %}
+                    <li class="bg-gray-50 border border-gray-300 shadow-md rounded-lg p-4 hover:shadow-lg transition">
+                        <h3 class="text-lg font-bold">{{ service.title }}</h3>
+                        <p class="text-gray-600 mt-2">{{ service.description|slice(0, 100) ~ '...' }}</p>
+                        <p class="text-indigo-600 mt-2 font-semibold">{{ service.price }} €</p>
+                        <a href="{{ path('service_detail', { id: service.id }) }}" class="mt-4 block text-blue-500 hover:underline">
+                            Voir le service
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-gray-600">Vous n'avez créé aucun service pour le moment.</p>
+        {% endif %}
+    </div>
+
+    <!-- Section Réservations effectuées -->
+    <div class="bg-white shadow-md rounded-lg p-6">
+        <h2 class="text-xl font-bold mb-4">Vos réservations</h2>
+        {% if userReservations|length > 0 %}
+            <table class="min-w-full bg-white border border-gray-300">
+                <thead>
+                    <tr class="bg-gray-100 border-b">
+                        <th class="text-left py-2 px-4">Service</th>
+                        <th class="text-left py-2 px-4">Créé par</th>
+                        <th class="text-left py-2 px-4">Date de réservation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reservation in userReservations %}
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="py-2 px-4">{{ reservation.service.title }}</td>
+                            <td class="py-2 px-4">{{ reservation.service.userService.username }}</td>
+                            <td class="py-2 px-4">{{ reservation.reservedAt|date('d/m/Y H:i') }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="text-gray-600">Vous n'avez effectué aucune réservation.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

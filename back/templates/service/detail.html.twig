@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ service.title }}{% endblock %}
+
+{% block body %}
+<div class="bg-white shadow-lg rounded-lg p-6">
+    <h1 class="text-3xl font-bold text-indigo-600">{{ service.title }}</h1>
+    <p class="mt-4 text-gray-600">{{ service.description }}</p>
+    <p class="mt-4 text-lg font-semibold text-indigo-600">Prix : {{ service.price }} €</p>
+
+    {% if service.demoUrl is not empty %}
+        <a href="{{ service.demoUrl }}" class="block mt-4 text-blue-500 hover:underline">
+            Voir la démo
+        </a>
+    {% endif %}
+
+    <!-- Section de réservation -->
+    <div class="mt-6">
+        {% if not app.user %}
+            <p class="text-red-500 font-bold">Vous devez être connecté pour réserver ce service.</p>
+            <a href="{{ path('app_login') }}" class="text-blue-500 underline">
+                Se connecter
+            </a>
+        {% elseif app.user == service.userService %}
+            <!-- Si l'utilisateur connecté est le créateur du service -->
+            <p class="text-red-500 font-bold">Vous ne pouvez pas réserver votre propre service.</p>
+        {% elseif service.reservation is defined and service.reservation is not empty %}
+            <!-- Si le service est déjà réservé -->
+            <p class="text-red-500 font-bold">Ce service a déjà été réservé.</p>
+        {% else %}
+            <!-- Bouton de réservation -->
+            <a href="{{ path('service_reserve', { id: service.id }) }}"
+               class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition-all duration-300">
+                Réserver ce service
+            </a>
+        {% endif %}
+    </div>
+
+    <!-- Section de paiement -->
+    <div class="mt-6">
+        {% if not app.user %}
+            <p class="text-red-500 font-bold">Vous devez être connecté pour effectuer un paiement.</p>
+            <a href="{{ path('app_login') }}" class="text-blue-500 underline">
+                Se connecter
+            </a>
+        {% elseif app.user != service.userService %}
+            <a href="{{ path('service_checkout', { id: service.id }) }}"
+               class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-all duration-300">
+                Payer maintenant ({{ service.price }} €)
+            </a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Services{% endblock %}
+
+{% block body %}
+<div class="container mx-auto py-8">
+    <!-- En-tête -->
+    <div class="flex justify-between items-center mb-8">
+        <h1 class="text-3xl font-bold text-gray-800">Nos Services</h1>
+        <a href="{{ path('service_new') }}" class="flex items-center text-white bg-indigo-600 px-4 py-2 rounded hover:bg-indigo-700 transition duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+            Créer un service
+        </a>
+    </div>
+
+    <!-- Liste des services -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for service in services.data %}
+            <div class="relative bg-white shadow-md rounded-lg overflow-hidden hover:shadow-xl hover:scale-105 transition duration-300 group">
+                <img src="https://via.placeholder.com/400x200" alt="{{ service.title }}" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h2 class="text-lg font-bold text-indigo-600">{{ service.title }}</h2>
+                    <p class="mt-2 text-gray-600">{{ service.description|slice(0, 100) ~ '...' }}</p>
+                    <p class="mt-2 text-indigo-600 font-semibold">{{ service.price }} €</p>
+                    <a href="{{ path('service_detail', { id: service.id }) }}" class="mt-4 inline-block bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition duration-300">
+                        Voir le service
+                    </a>
+
+                    <!-- Bouton Supprimer visible uniquement pour les administrateurs ou le propriétaire -->
+                    {% if app.user and (is_granted('ROLE_ADMIN') or service.userService == app.user) %}
+                        <form method="post" action="{{ path('service_delete', {'id': service.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer ce service ?');" class="mt-4">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ service.id) }}">
+                            <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition duration-300">
+                                Supprimer
+                            </button>
+                        </form>
+                    {% endif %}
+                </div>
+
+                <!-- Effet de décoration au survol -->
+                <div class="absolute inset-0 bg-indigo-100 opacity-0 group-hover:opacity-20 transition duration-300 pointer-events-none"></div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-8 flex justify-center">
+        <nav class="inline-flex space-x-2">
+            <!-- Page précédente -->
+            {% if services.previousPage %}
+                <a href="{{ path('service_list', { page: services.previousPage }) }}"
+                   class="px-4 py-2 bg-white border border-gray-300 rounded hover:bg-gray-100">
+                    &laquo; Précédent
+                </a>
+            {% else %}
+                <span class="px-4 py-2 bg-gray-200 border border-gray-300 rounded text-gray-500">&laquo; Précédent</span>
+            {% endif %}
+
+            <!-- Pages numérotées -->
+            {% for page in 1..services.totalPages %}
+                {% if page == services.currentPage %}
+                    <span class="px-4 py-2 bg-indigo-500 text-white rounded">{{ page }}</span>
+                {% else %}
+                    <a href="{{ path('service_list', { page: page }) }}"
+                       class="px-4 py-2 bg-white border border-gray-300 rounded hover:bg-gray-100">
+                        {{ page }}
+                    </a>
+                {% endif %}
+            {% endfor %}
+
+            <!-- Page suivante -->
+            {% if services.nextPage %}
+                <a href="{{ path('service_list', { page: services.nextPage }) }}"
+                   class="px-4 py-2 bg-white border border-gray-300 rounded hover:bg-gray-100">
+                    Suivant &raquo;
+                </a>
+            {% else %}
+                <span class="px-4 py-2 bg-gray-200 border border-gray-300 rounded text-gray-500">Suivant &raquo;</span>
+            {% endif %}
+        </nav>
+    </div>
+</div>
+{% endblock %}

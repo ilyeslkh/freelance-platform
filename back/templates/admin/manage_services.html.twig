@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gérer les Services{% endblock %}
+
+{% block body %}
+<div class="container mx-auto py-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">Liste des services</h1>
+    <table class="min-w-full border border-gray-300 bg-white shadow rounded-lg">
+        <thead class="bg-gray-200">
+            <tr>
+                <th class="px-6 py-3 text-left text-sm font-medium text-gray-800">Titre</th>
+                <th class="px-6 py-3 text-left text-sm font-medium text-gray-800">Prix</th>
+                <th class="px-6 py-3 text-left text-sm font-medium text-gray-800">Créateur</th>
+                <th class="px-6 py-3 text-center text-sm font-medium text-gray-800">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for service in services %}
+                <tr class="border-t border-gray-300">
+                    <td class="px-6 py-4">{{ service.title }}</td>
+                    <td class="px-6 py-4">{{ service.price }} €</td>
+                    <td class="px-6 py-4">{{ service.userService.email }}</td>
+                    <td class="px-6 py-4 text-center">
+                        <form method="post" action="{{ path('admin_delete_service', {'id': service.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer ce service ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete_service_' ~ service.id) }}">
+                            <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                                Supprimer
+                            </button>
+                        </form>
+
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

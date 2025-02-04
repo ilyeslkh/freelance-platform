@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du Freelancer{% endblock %}
+
+{% block body %}
+<h1>Détails du Freelancer</h1>
+
+<p><strong>Email :</strong> {{ freelancer.email }}</p>
+<p><strong>Portfolio :</strong> <a href="{{ freelancer.portfolio }}" target="_blank">{{ freelancer.portfolio }}</a></p>
+<p><strong>Disponible :</strong> {{ freelancer.available ? 'Oui' : 'Non' }}</p>
+
+<a href="{{ path('freelancer_list') }}" class="text-blue-500">Retour à la liste des Freelancers</a>
+{% endblock %}

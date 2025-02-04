@@ -1,0 +1,42 @@
+security:
+  password_hashers:
+    Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: "auto"
+
+  providers:
+    app_user_provider:
+      entity:
+        class: App\Entity\User
+        property: email
+
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+
+    main:
+      lazy: true
+      provider: app_user_provider
+      stateless: false
+
+      form_login:
+        login_path: app_login
+        check_path: app_login
+        default_target_path: home
+
+      custom_authenticators:
+        - App\Security\GoogleAuthenticator
+
+      logout:
+        path: app_logout
+        target: home
+
+  access_control:
+    - { path: ^/admin, roles: ROLE_ADMIN }
+    - { path: ^/profile, roles: ROLE_USER }
+    #- { path: ^/jobs, roles: ROLE_USER }
+    #- { path: ^/services, roles: ROLE_USER }
+    #- { path: ^/banned, roles: ROLE_BANNED }
+
+  role_hierarchy:
+    ROLE_ADMIN: [ROLE_USER]
+    ROLE_BANNED: [] # No permissions for banned users
