@@ -89,21 +89,21 @@ php bin/phpunit
 
 ### **4.1 Comptes Admin**
 
-| Email          | Mot de passe |
-| -------------- | ------------ |
-| admin@test.com | admin123     |
+| Email             | Mot de passe |
+| ----------------- | ------------ |
+| admin@example.com | adminpass    |
 
-### **4.2 Comptes Freelance**
+### **4.2 Comptes Banned**
 
-| Email               | Mot de passe |
-| ------------------- | ------------ |
-| freelance1@test.com | freelance123 |
+| Email              | Mot de passe |
+| ------------------ | ------------ |
+| banned@example.com | bannedpass   |
 
 ### **4.3 Comptes Client**
 
-| Email            | Mot de passe |
-| ---------------- | ------------ |
-| client1@test.com | client123    |
+| Email             | Mot de passe |
+| ----------------- | ------------ |
+| user1@example.com | userpass1    |
 
 ---
 

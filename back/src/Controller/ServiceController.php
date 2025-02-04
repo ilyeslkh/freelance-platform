@@ -194,11 +194,33 @@ class ServiceController extends AbstractController
     return $this->redirectToRoute('dashboard');
 }
 
-    #[Route('/service/{id}/checkout', name: 'service_checkout')]
-    public function checkout(Service $service): Response
+#[Route('/service/{id}/checkout', name: 'service_checkout')]
+    public function checkout(Service $service, EntityManagerInterface $entityManager): Response
     {
+        $user = $this->getUser();
+
+        // Vérifier si l'utilisateur est connecté
+        if (!$user) {
+            $this->addFlash('error', 'Vous devez être connecté pour effectuer un paiement.');
+            return $this->redirectToRoute('app_login');
+        }
+
+        // Vérifier si le service est réservé
+        $reservation = $entityManager->getRepository(Reservation::class)
+            ->findOneBy(['service' => $service]);
+
+        if ($reservation && $reservation->getReservedBy() !== $user) {
+            // Si le service est réservé par un autre utilisateur
+            $this->addFlash('error', sprintf(
+                'Ce service a été réservé par un autre utilisateur (%s) et ne peut pas être payé.',
+                $reservation->getReservedBy()->getUsername()
+            ));
+            return $this->redirectToRoute('service_detail', ['id' => $service->getId()]);
+        }
+
+        // Configuration de Stripe
         Stripe::setApiKey($this->getParameter('stripe_secret_key'));
-    
+
         $session = Session::create([
             'payment_method_types' => ['card'],
             'line_items' => [[
@@ -215,9 +237,10 @@ class ServiceController extends AbstractController
             'success_url' => $this->generateUrl('payment_success', [], UrlGeneratorInterface::ABSOLUTE_URL),
             'cancel_url' => $this->generateUrl('payment_cancel', [], UrlGeneratorInterface::ABSOLUTE_URL),
         ]);
-    
+
         return $this->redirect($session->url, 303);
     }
+
     
 
     #[Route('/payment-success', name: 'payment_success')]
@@ -233,6 +256,8 @@ class ServiceController extends AbstractController
         $this->addFlash('error', 'Paiement annulé. Veuillez réessayer.');
         return $this->redirectToRoute('service_list');
     }
+
+    
 
 
 
