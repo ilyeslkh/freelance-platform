@@ -23,6 +23,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                     'skills',
                     'plainPassword',
                     'reservations',
+                    'jobApplications',
                     'userIdentifier',
                 ],
             ],

@@ -19,7 +19,7 @@ return [
         '/' => [[['_route' => 'home', '_controller' => 'App\\Controller\\HomeController::index'], null, ['GET' => 0], null, false, false, null]],
         '/banned' => [[['_route' => 'banned_page', '_controller' => 'App\\Controller\\HomeController::bannedPage'], null, null, null, false, false, null]],
         '/jobs' => [[['_route' => 'job_list', '_controller' => 'App\\Controller\\JobController::list'], null, null, null, false, false, null]],
-        '/jobs/new' => [[['_route' => 'job_create', '_controller' => 'App\\Controller\\JobController::create'], null, null, null, false, false, null]],
+        '/jobs/new' => [[['_route' => 'job_create', '_controller' => 'App\\Controller\\JobController::create'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\LoginController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\LoginController::logout'], null, null, null, false, false, null]],
         '/create-checkout-session' => [[['_route' => 'create_checkout_session', '_controller' => 'App\\Controller\\PaymentController::createCheckoutSession'], null, null, null, false, false, null]],
@@ -181,19 +181,28 @@ return [
                     .'|ategories/([^/]++)/services(*:1648)'
                     .'|lient/([^/]++)(*:1671)'
                 .')'
-                .'|/freelancer/([^/]++)(*:1701)'
+                .'|/reservation/([^/]++)/(?'
+                    .'|accept(*:1712)'
+                    .'|reject(*:1727)'
+                .')'
+                .'|/freelancer/([^/]++)(*:1757)'
                 .'|/jobs/(?'
-                    .'|delete/(\\d+)(*:1731)'
-                    .'|(\\d+)(*:1745)'
+                    .'|(\\d+)/delete(*:1787)'
+                    .'|(\\d+)(*:1801)'
+                    .'|([^/]++)/apply(*:1824)'
+                    .'|application/([^/]++)/(?'
+                        .'|accept(*:1863)'
+                        .'|reject(*:1878)'
+                    .')'
                 .')'
                 .'|/service/(?'
-                    .'|delete/(\\d+)(*:1779)'
+                    .'|delete/(\\d+)(*:1913)'
                     .'|([^/]++)/(?'
-                        .'|reserve(*:1807)'
-                        .'|checkout(*:1824)'
+                        .'|reserve(*:1941)'
+                        .'|checkout(*:1958)'
                     .')'
-                    .'|(\\d+)(*:1839)'
-                    .'|edit/(\\d+)(*:1858)'
+                    .'|(\\d+)(*:1973)'
+                    .'|edit/(\\d+)(*:1992)'
                 .')'
             .')/?$}sDu',
     ],
@@ -348,14 +357,19 @@ return [
         1607 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
         1648 => [[['_route' => 'category_services', '_controller' => 'App\\Controller\\CategoryController::services'], ['id'], ['GET' => 0], null, false, false, null]],
         1671 => [[['_route' => 'client_detail', '_controller' => 'App\\Controller\\ClientController::show'], ['id'], null, null, false, true, null]],
-        1701 => [[['_route' => 'freelancer_detail', '_controller' => 'App\\Controller\\FreelancerController::show'], ['id'], null, null, false, true, null]],
-        1731 => [[['_route' => 'job_delete', '_controller' => 'App\\Controller\\JobController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        1745 => [[['_route' => 'job_detail', '_controller' => 'App\\Controller\\JobController::detail'], ['id'], null, null, false, true, null]],
-        1779 => [[['_route' => 'service_delete', '_controller' => 'App\\Controller\\ServiceController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        1807 => [[['_route' => 'service_reserve', '_controller' => 'App\\Controller\\ServiceController::reserve'], ['id'], null, null, false, false, null]],
-        1824 => [[['_route' => 'service_checkout', '_controller' => 'App\\Controller\\ServiceController::checkout'], ['id'], null, null, false, false, null]],
-        1839 => [[['_route' => 'service_detail', '_controller' => 'App\\Controller\\ServiceDetailController::detail'], ['id'], null, null, false, true, null]],
-        1858 => [
+        1712 => [[['_route' => 'reservation_accept', '_controller' => 'App\\Controller\\DashboardController::acceptReservation'], ['id'], ['POST' => 0], null, false, false, null]],
+        1727 => [[['_route' => 'reservation_reject', '_controller' => 'App\\Controller\\DashboardController::rejectReservation'], ['id'], ['POST' => 0], null, false, false, null]],
+        1757 => [[['_route' => 'freelancer_detail', '_controller' => 'App\\Controller\\FreelancerController::show'], ['id'], null, null, false, true, null]],
+        1787 => [[['_route' => 'job_delete', '_controller' => 'App\\Controller\\JobController::delete'], ['id'], ['POST' => 0], null, false, false, null]],
+        1801 => [[['_route' => 'job_detail', '_controller' => 'App\\Controller\\JobController::detail'], ['id'], null, null, false, true, null]],
+        1824 => [[['_route' => 'job_apply', '_controller' => 'App\\Controller\\JobController::apply'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1863 => [[['_route' => 'job_application_accept', '_controller' => 'App\\Controller\\JobController::acceptApplication'], ['id'], ['POST' => 0], null, false, false, null]],
+        1878 => [[['_route' => 'job_application_reject', '_controller' => 'App\\Controller\\JobController::rejectApplication'], ['id'], ['POST' => 0], null, false, false, null]],
+        1913 => [[['_route' => 'service_delete', '_controller' => 'App\\Controller\\ServiceController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        1941 => [[['_route' => 'service_reserve', '_controller' => 'App\\Controller\\ServiceController::reserve'], ['id'], null, null, false, false, null]],
+        1958 => [[['_route' => 'service_checkout', '_controller' => 'App\\Controller\\ServiceController::checkout'], ['id'], null, null, false, false, null]],
+        1973 => [[['_route' => 'service_detail', '_controller' => 'App\\Controller\\ServiceDetailController::detail'], ['id'], null, null, false, true, null]],
+        1992 => [
             [['_route' => 'service_edit', '_controller' => 'App\\Controller\\ServiceEditController::edit'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

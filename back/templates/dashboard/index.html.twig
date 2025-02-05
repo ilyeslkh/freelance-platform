@@ -26,6 +26,8 @@
                         <th class="text-left py-2 px-4">Service</th>
                         <th class="text-left py-2 px-4">Réservé par</th>
                         <th class="text-left py-2 px-4">Date de réservation</th>
+                        <th class="text-left py-2 px-4">Statut</th>
+                        <th class="text-left py-2 px-4">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,6 +36,31 @@
                             <td class="py-2 px-4">{{ reservation.service.title }}</td>
                             <td class="py-2 px-4">{{ reservation.reservedBy.username }}</td>
                             <td class="py-2 px-4">{{ reservation.reservedAt|date('d/m/Y H:i') }}</td>
+                            <td class="py-2 px-4">
+                                {% if reservation.status == 'pending' %}
+                                    <span class="text-yellow-500 font-bold">En attente</span>
+                                {% elseif reservation.status == 'accepted' %}
+                                    <span class="text-green-500 font-bold">Acceptée</span>
+                                {% elseif reservation.status == 'rejected' %}
+                                    <span class="text-red-500 font-bold">Refusée</span>
+                                {% endif %}
+                            </td>
+                            <td class="py-2 px-4">
+                                {% if reservation.status == 'pending' %}
+                                    <form method="post" action="{{ path('reservation_accept', { id: reservation.id }) }}" class="inline">
+                                        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                                            Accepter
+                                        </button>
+                                    </form>
+                                    <form method="post" action="{{ path('reservation_reject', { id: reservation.id }) }}" class="inline">
+                                        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                                            Refuser
+                                        </button>
+                                    </form>
+                                {% else %}
+                                    <span class="text-gray-500">Aucune action</span>
+                                {% endif %}
+                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -65,7 +92,7 @@
     </div>
 
     <!-- Section Réservations effectuées -->
-    <div class="bg-white shadow-md rounded-lg p-6">
+    <div class="bg-white shadow-md rounded-lg p-6 mb-8">
         <h2 class="text-xl font-bold mb-4">Vos réservations</h2>
         {% if userReservations|length > 0 %}
             <table class="min-w-full bg-white border border-gray-300">
@@ -90,5 +117,60 @@
             <p class="text-gray-600">Vous n'avez effectué aucune réservation.</p>
         {% endif %}
     </div>
+
+    <!-- Section Candidatures reçues pour vos annonces -->
+<div class="bg-white shadow-md rounded-lg p-6 mb-8">
+    <h2 class="text-xl font-bold mb-4">Candidatures pour vos annonces</h2>
+    {% if receivedApplications|length > 0 %}
+        <table class="min-w-full bg-white border border-gray-300">
+            <thead>
+                <tr class="bg-gray-100 border-b">
+                    <th class="text-left py-2 px-4">Annonce</th>
+                    <th class="text-left py-2 px-4">Candidat</th>
+                    <th class="text-left py-2 px-4">Message</th>
+                    <th class="text-left py-2 px-4">Statut</th>
+                    <th class="text-left py-2 px-4">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for application in receivedApplications %}
+                    <tr class="border-b hover:bg-gray-50">
+                        <td class="py-2 px-4">{{ application.job.title }}</td>
+                        <td class="py-2 px-4">{{ application.applicant.username }}</td>
+                        <td class="py-2 px-4">{{ application.message }}</td>
+                        <td class="py-2 px-4">
+                            {% if application.status == 'pending' %}
+                                <span class="text-yellow-500 font-bold">En attente</span>
+                            {% elseif application.status == 'accepted' %}
+                                <span class="text-green-500 font-bold">Acceptée</span>
+                            {% elseif application.status == 'rejected' %}
+                                <span class="text-red-500 font-bold">Refusée</span>
+                            {% endif %}
+                        </td>
+                        <td class="py-2 px-4">
+                            {% if application.status == 'pending' %}
+                                <form method="post" action="{{ path('job_application_accept', { id: application.id }) }}" class="inline">
+                                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                                        Accepter
+                                    </button>
+                                </form>
+                                <form method="post" action="{{ path('job_application_reject', { id: application.id }) }}" class="inline">
+                                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                                        Refuser
+                                    </button>
+                                </form>
+                            {% else %}
+                                <span class="text-gray-500">Aucune action</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="text-gray-600">Aucune candidature reçue pour vos annonces.</p>
+    {% endif %}
+</div>
+
 </div>
 {% endblock %}

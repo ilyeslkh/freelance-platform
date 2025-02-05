@@ -16,5 +16,47 @@
             </button>
         </form>
     {% endif %}
+
+    <!-- Section pour postuler -->
+    <div class="mt-8 bg-white shadow-md rounded-lg p-6">
+        {% if not app.user %}
+            <p class="text-red-500">Vous devez être connecté pour postuler à cette annonce.</p>
+            <a href="{{ path('app_login') }}" class="text-blue-500 underline">Se connecter</a>
+        {% elseif job.userJob == app.user %}
+            <p class="text-red-500">Vous ne pouvez pas postuler à votre propre annonce.</p>
+        {% elseif applicationForm %}
+            <h2 class="text-2xl font-bold mb-4">Postuler à cette annonce</h2>
+            {{ form_start(applicationForm, {'attr': {'class': 'space-y-4'}}) }}
+                <div>
+                    {{ form_label(applicationForm.message, null, {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
+                    {{ form_widget(applicationForm.message) }}
+                    {{ form_errors(applicationForm.message) }}
+                </div>
+                <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">
+                    Postuler
+                </button>
+            {{ form_end(applicationForm) }}
+        {% endif %}
+    </div>
+
+
+
+    <!-- Liste des candidatures -->
+    {% if job.applications|length > 0 %}
+        <div class="mt-8 bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4">Candidatures reçues</h2>
+            <ul class="space-y-4">
+                {% for application in job.applications %}
+                    <li class="border border-gray-300 rounded-lg p-4">
+                        <p><strong>Candidat :</strong> {{ application.applicant.username }}</p>
+                        <p><strong>Message :</strong> {{ application.message }}</p>
+                        <p class="text-gray-500 text-sm"><strong>Postulé le :</strong> {{ application.appliedAt|date('d/m/Y H:i') }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% else %}
+        <p class="text-gray-600 mt-8">Aucune candidature reçue pour cette annonce.</p>
+    {% endif %}
 </div>
 {% endblock %}

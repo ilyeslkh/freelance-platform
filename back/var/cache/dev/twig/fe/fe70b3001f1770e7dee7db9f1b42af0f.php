@@ -85,10 +85,10 @@ class __TwigTemplate_dfe26ae17bb05053b545c363ed0cd765 extends Template
         yield "<div class=\"container mx-auto px-4 py-6\">
     <div class=\"flex justify-between items-center mb-6\">
         <h1 class=\"text-2xl font-bold\">Liste des Annonces</h1>
-        <!-- Bouton \"Créer une annonce\" visible uniquement pour les administrateurs -->
+        <!-- Bouton \"Créer une annonce\" visible pour tous les utilisateurs connectés -->
         ";
         // line 10
-        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+        if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 10, $this->source); })()), "user", [], "any", false, false, false, 10)) {
             // line 11
             yield "            <a href=\"";
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("job_create");
@@ -207,8 +207,8 @@ class __TwigTemplate_dfe26ae17bb05053b545c363ed0cd765 extends Template
 <div class=\"container mx-auto px-4 py-6\">
     <div class=\"flex justify-between items-center mb-6\">
         <h1 class=\"text-2xl font-bold\">Liste des Annonces</h1>
-        <!-- Bouton \"Créer une annonce\" visible uniquement pour les administrateurs -->
-        {% if is_granted('ROLE_ADMIN') %}
+        <!-- Bouton \"Créer une annonce\" visible pour tous les utilisateurs connectés -->
+        {% if app.user %}
             <a href=\"{{ path('job_create') }}\" class=\"bg-blue-600 text-white px-6 py-2 rounded-full shadow hover:bg-blue-700 transition duration-300\">
                 Créer une annonce
             </a>

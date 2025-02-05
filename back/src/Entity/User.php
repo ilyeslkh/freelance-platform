@@ -79,6 +79,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'reservedBy')]
     private Collection $reservations;
 
+    /**
+     * @var Collection<int, JobApplication>
+     */
+    #[ORM\OneToMany(targetEntity: JobApplication::class, mappedBy: 'applicant')]
+    private Collection $jobApplications;
+
     public function __construct()
     {
         $this->services = new ArrayCollection();
@@ -87,6 +93,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->badges = new ArrayCollection();
         $this->skills = new ArrayCollection();
         $this->reservations = new ArrayCollection();
+        $this->jobApplications = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -350,6 +357,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($reservation->getReservedBy() === $this) {
                 $reservation->setReservedBy(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, JobApplication>
+     */
+    public function getJobApplications(): Collection
+    {
+        return $this->jobApplications;
+    }
+
+    public function addJobApplication(JobApplication $jobApplication): static
+    {
+        if (!$this->jobApplications->contains($jobApplication)) {
+            $this->jobApplications->add($jobApplication);
+            $jobApplication->setApplicant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeJobApplication(JobApplication $jobApplication): static
+    {
+        if ($this->jobApplications->removeElement($jobApplication)) {
+            // set the owning side to null (unless already changed)
+            if ($jobApplication->getApplicant() === $this) {
+                $jobApplication->setApplicant(null);
             }
         }
 

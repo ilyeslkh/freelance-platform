@@ -22,6 +22,9 @@ class Reservation
     #[ORM\Column]
     private ?\DateTimeImmutable $reservedAt = null;
 
+    #[ORM\Column(length: 50)]
+    private ?string $status = 'pending';
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,17 @@ class Reservation
     public function setReservedAt(\DateTimeImmutable $reservedAt): static
     {
         $this->reservedAt = $reservedAt;
+
+        return $this;
+    }
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }

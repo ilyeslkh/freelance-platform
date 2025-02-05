@@ -6,8 +6,8 @@
 <div class="container mx-auto px-4 py-6">
     <div class="flex justify-between items-center mb-6">
         <h1 class="text-2xl font-bold">Liste des Annonces</h1>
-        <!-- Bouton "Créer une annonce" visible uniquement pour les administrateurs -->
-        {% if is_granted('ROLE_ADMIN') %}
+        <!-- Bouton "Créer une annonce" visible pour tous les utilisateurs connectés -->
+        {% if app.user %}
             <a href="{{ path('job_create') }}" class="bg-blue-600 text-white px-6 py-2 rounded-full shadow hover:bg-blue-700 transition duration-300">
                 Créer une annonce
             </a>

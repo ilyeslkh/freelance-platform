@@ -10,7 +10,6 @@ Avec l’essor du travail indépendant, la mise en relation des freelances et de
 
 ✅ Permettre aux clients de **publier des offres de missions** et aux freelances de **postuler**.  
 ✅ Offrir un **système de paiement sécurisé** via **Stripe**.  
-✅ Implémenter une **authentification OAuth via Google**.  
 ✅ Gérer les **réservations** et la facturation.  
 ✅ Offrir un **tableau de bord** pour les administrateurs.  
 ✅ Assurer une **API REST** robuste pour intégration future.
@@ -30,7 +29,6 @@ Avec l’essor du travail indépendant, la mise en relation des freelances et de
 ### **2.2 Authentification & Sécurité**
 
 - **Connexion via formulaire** (email/mot de passe) + chiffrement des mots de passe avec bcrypt.
-- **OAuth Google** pour une connexion rapide.
 - **Protection CSRF/XSS** et politique **CORS stricte** pour l’API.
 - **Permissions via Symfony Security** (`ROLE_CLIENT`, `ROLE_FREELANCER`, `ROLE_ADMIN`).
 

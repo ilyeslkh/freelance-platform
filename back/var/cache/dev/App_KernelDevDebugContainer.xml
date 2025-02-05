@@ -425,6 +425,10 @@
     <service id="App\Serializer\JobNormalizer" class="App\Serializer\JobNormalizer" autowire="true" autoconfigure="true">
       <tag name="container.error" message="Class &quot;Symfony\Component\Serializer\Normalizer\ContextAwareNormalizerInterface&quot; not found while loading &quot;App\Serializer\JobNormalizer&quot;."/>
     </service>
+    <service id="App\Security\JobApplicationVoter" class="App\Security\JobApplicationVoter" autowire="true" autoconfigure="true">
+      <tag name="security.voter"/>
+      <argument type="service" id="security.helper"/>
+    </service>
     <service id="App\Command\SendTestEmailCommand" class="App\Command\SendTestEmailCommand" autowire="true" autoconfigure="true">
       <tag name="console.command"/>
       <tag name="container.no_preload"/>
@@ -571,12 +575,16 @@
     <service id="App\Entity\Client" class="App\Entity\Client"/>
     <service id="App\Entity\Freelancer" class="App\Entity\Freelancer"/>
     <service id="App\Entity\Job" class="App\Entity\Job"/>
+    <service id="App\Entity\JobApplication" class="App\Entity\JobApplication"/>
     <service id="App\Entity\Profile" class="App\Entity\Profile"/>
     <service id="App\Entity\Reservation" class="App\Entity\Reservation"/>
     <service id="App\Entity\Review" class="App\Entity\Review"/>
     <service id="App\Entity\Service" class="App\Entity\Service"/>
     <service id="App\Entity\Skill" class="App\Entity\Skill"/>
     <service id="App\Entity\User" class="App\Entity\User"/>
+    <service id="App\Form\JobApplicationType" class="App\Form\JobApplicationType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\JobType" class="App\Form\JobType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -602,6 +610,10 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\FreelancerRepository" class="App\Repository\FreelancerRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\JobApplicationRepository" class="App\Repository\JobApplicationRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -679,7 +691,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.a7gPRuZ"/>
+      <argument type="service" id=".service_locator.oGs0Xpg"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -1329,6 +1341,7 @@
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\JobApplicationType</argument>
         <argument>App\Form\JobType</argument>
         <argument>App\Form\RegistrationType</argument>
         <argument>App\Form\ReservationType</argument>
@@ -2298,7 +2311,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.a7gPRuZ"/>
+      <argument type="service" id=".service_locator.oGs0Xpg"/>
     </service>
     <service id="routing.resolver" class="Symfony\Component\Config\Loader\LoaderResolver">
       <call method="addLoader">
@@ -2935,7 +2948,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.3N69S0l"/>
+      <argument type="service" id=".service_locator.4Z1IjEC"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -3799,7 +3812,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.QU5SNNx"/>
+      <argument type="service" id=".service_locator.Bl8eVqM"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -6601,6 +6614,8 @@
     <service id=".abstract.instanceof.App\EventSubscriber\TwigGlobalSubscriber" class="App\EventSubscriber\TwigGlobalSubscriber" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\EventDispatcher\EventSubscriberInterface.0.App\EventSubscriber\RedirectBannedSubscriber" class="App\EventSubscriber\RedirectBannedSubscriber" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\EventSubscriber\RedirectBannedSubscriber" class="App\EventSubscriber\RedirectBannedSubscriber" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Security\Core\Authorization\Voter\VoterInterface.0.App\Security\JobApplicationVoter" class="App\Security\JobApplicationVoter" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Security\JobApplicationVoter" class="App\Security\JobApplicationVoter" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Console\Command\Command.0.App\Command\SendTestEmailCommand" class="App\Command\SendTestEmailCommand" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Command\SendTestEmailCommand" class="App\Command\SendTestEmailCommand" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
@@ -6650,6 +6665,8 @@
     <service id=".abstract.instanceof.App\Controller\ServiceEditController" class="App\Controller\ServiceEditController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\FixturesBundle\ORMFixtureInterface.0.App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\JobApplicationType" class="App\Form\JobApplicationType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\JobApplicationType" class="App\Form\JobApplicationType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\JobType" class="App\Form\JobType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\JobType" class="App\Form\JobType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegistrationType" class="App\Form\RegistrationType" autowire="true" abstract="true"/>
@@ -6666,6 +6683,8 @@
     <service id=".abstract.instanceof.App\Repository\ClientRepository" class="App\Repository\ClientRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\FreelancerRepository" class="App\Repository\FreelancerRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\FreelancerRepository" class="App\Repository\FreelancerRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\JobApplicationRepository" class="App\Repository\JobApplicationRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\JobApplicationRepository" class="App\Repository\JobApplicationRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\JobRepository" class="App\Repository\JobRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\JobRepository" class="App\Repository\JobRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ProfileRepository" class="App\Repository\ProfileRepository" autowire="true" abstract="true"/>
@@ -7309,18 +7328,39 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.0jUX5FG" method="withContext"/>
     </service>
-    <service id=".service_locator.NAsPpDp" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.jWLPRyP" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="reservationRepository" type="service_closure" id="App\Repository\ReservationRepository"/>
         <argument key="serviceRepository" type="service_closure" id="App\Repository\ServiceRepository"/>
+        <argument key="jobApplicationRepository" type="service_closure" id="App\Repository\JobApplicationRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.NAsPpDp.App\Controller\DashboardController::dashboard()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.jWLPRyP.App\Controller\DashboardController::dashboard()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\DashboardController::dashboard()"/>
       <argument>App\Controller\DashboardController::dashboard()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.NAsPpDp" method="withContext"/>
+      <factory service=".service_locator.jWLPRyP" method="withContext"/>
+    </service>
+    <service id=".service_locator.UcEu5G6" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="reservation" type="service_closure" id="App\Entity\Reservation"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="emailService" type="service_closure" id="App\Services\EmailService"/>
+      </argument>
+    </service>
+    <service id=".service_locator.UcEu5G6.App\Controller\DashboardController::acceptReservation()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\DashboardController::acceptReservation()"/>
+      <argument>App\Controller\DashboardController::acceptReservation()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.UcEu5G6" method="withContext"/>
+    </service>
+    <service id=".service_locator.UcEu5G6.App\Controller\DashboardController::rejectReservation()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\DashboardController::rejectReservation()"/>
+      <argument>App\Controller\DashboardController::rejectReservation()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.UcEu5G6" method="withContext"/>
     </service>
     <service id=".service_locator.MtXMf3E" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
@@ -7409,17 +7449,45 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.wXxTKMw" method="withContext"/>
     </service>
-    <service id=".service_locator.nU509g2" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="job" type="service_closure" id="App\Entity\Job"/>
-      </argument>
-    </service>
-    <service id=".service_locator.nU509g2.App\Controller\JobController::detail()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.wXxTKMw.App\Controller\JobController::detail()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\JobController::detail()"/>
       <argument>App\Controller\JobController::detail()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.nU509g2" method="withContext"/>
+      <factory service=".service_locator.wXxTKMw" method="withContext"/>
+    </service>
+    <service id=".service_locator.qZVw0LA" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="job" type="service_closure" id="App\Entity\Job"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="emailService" type="service_closure" id="App\Services\EmailService"/>
+      </argument>
+    </service>
+    <service id=".service_locator.qZVw0LA.App\Controller\JobController::apply()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\JobController::apply()"/>
+      <argument>App\Controller\JobController::apply()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.qZVw0LA" method="withContext"/>
+    </service>
+    <service id=".service_locator.GE3yhlf" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="jobApplication" type="service_closure" id="App\Entity\JobApplication"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="emailService" type="service_closure" id="App\Services\EmailService"/>
+      </argument>
+    </service>
+    <service id=".service_locator.GE3yhlf.App\Controller\JobController::acceptApplication()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\JobController::acceptApplication()"/>
+      <argument>App\Controller\JobController::acceptApplication()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.GE3yhlf" method="withContext"/>
+    </service>
+    <service id=".service_locator.GE3yhlf.App\Controller\JobController::rejectApplication()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\JobController::rejectApplication()"/>
+      <argument>App\Controller\JobController::rejectApplication()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.GE3yhlf" method="withContext"/>
     </service>
     <service id=".service_locator.3QECKYg" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
@@ -7526,7 +7594,7 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.egipcEH" method="withContext"/>
     </service>
-    <service id=".service_locator.a7gPRuZ" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.oGs0Xpg" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.zHyJIs5.kernel::registerContainerConfiguration()"/>
@@ -7538,7 +7606,9 @@
         <argument key="App\Controller\CategoryController::services" type="service_closure" id=".service_locator.ZAUGEyP.App\Controller\CategoryController::services()"/>
         <argument key="App\Controller\ClientController::index" type="service_closure" id=".service_locator.zroWs1n.App\Controller\ClientController::index()"/>
         <argument key="App\Controller\ClientController::show" type="service_closure" id=".service_locator.0jUX5FG.App\Controller\ClientController::show()"/>
-        <argument key="App\Controller\DashboardController::dashboard" type="service_closure" id=".service_locator.NAsPpDp.App\Controller\DashboardController::dashboard()"/>
+        <argument key="App\Controller\DashboardController::dashboard" type="service_closure" id=".service_locator.jWLPRyP.App\Controller\DashboardController::dashboard()"/>
+        <argument key="App\Controller\DashboardController::acceptReservation" type="service_closure" id=".service_locator.UcEu5G6.App\Controller\DashboardController::acceptReservation()"/>
+        <argument key="App\Controller\DashboardController::rejectReservation" type="service_closure" id=".service_locator.UcEu5G6.App\Controller\DashboardController::rejectReservation()"/>
         <argument key="App\Controller\FreelancerController::index" type="service_closure" id=".service_locator.MtXMf3E.App\Controller\FreelancerController::index()"/>
         <argument key="App\Controller\FreelancerController::show" type="service_closure" id=".service_locator.iws40It.App\Controller\FreelancerController::show()"/>
         <argument key="App\Controller\GoogleController::connect" type="service_closure" id=".service_locator.wLvy5Az.App\Controller\GoogleController::connect()"/>
@@ -7546,7 +7616,10 @@
         <argument key="App\Controller\JobController::list" type="service_closure" id=".service_locator.wMGz0tS.App\Controller\JobController::list()"/>
         <argument key="App\Controller\JobController::create" type="service_closure" id=".service_locator.7lCRvYA.App\Controller\JobController::create()"/>
         <argument key="App\Controller\JobController::delete" type="service_closure" id=".service_locator.wXxTKMw.App\Controller\JobController::delete()"/>
-        <argument key="App\Controller\JobController::detail" type="service_closure" id=".service_locator.nU509g2.App\Controller\JobController::detail()"/>
+        <argument key="App\Controller\JobController::detail" type="service_closure" id=".service_locator.wXxTKMw.App\Controller\JobController::detail()"/>
+        <argument key="App\Controller\JobController::apply" type="service_closure" id=".service_locator.qZVw0LA.App\Controller\JobController::apply()"/>
+        <argument key="App\Controller\JobController::acceptApplication" type="service_closure" id=".service_locator.GE3yhlf.App\Controller\JobController::acceptApplication()"/>
+        <argument key="App\Controller\JobController::rejectApplication" type="service_closure" id=".service_locator.GE3yhlf.App\Controller\JobController::rejectApplication()"/>
         <argument key="App\Controller\LoginController::login" type="service_closure" id=".service_locator.3QECKYg.App\Controller\LoginController::login()"/>
         <argument key="App\Controller\RegistrationController::register" type="service_closure" id=".service_locator.A84gqGd.App\Controller\RegistrationController::register()"/>
         <argument key="App\Controller\ServiceController::list" type="service_closure" id=".service_locator..wKp6bH.App\Controller\ServiceController::list()"/>
@@ -7564,7 +7637,9 @@
         <argument key="App\Controller\CategoryController:services" type="service_closure" id=".service_locator.ZAUGEyP.App\Controller\CategoryController::services()"/>
         <argument key="App\Controller\ClientController:index" type="service_closure" id=".service_locator.zroWs1n.App\Controller\ClientController::index()"/>
         <argument key="App\Controller\ClientController:show" type="service_closure" id=".service_locator.0jUX5FG.App\Controller\ClientController::show()"/>
-        <argument key="App\Controller\DashboardController:dashboard" type="service_closure" id=".service_locator.NAsPpDp.App\Controller\DashboardController::dashboard()"/>
+        <argument key="App\Controller\DashboardController:dashboard" type="service_closure" id=".service_locator.jWLPRyP.App\Controller\DashboardController::dashboard()"/>
+        <argument key="App\Controller\DashboardController:acceptReservation" type="service_closure" id=".service_locator.UcEu5G6.App\Controller\DashboardController::acceptReservation()"/>
+        <argument key="App\Controller\DashboardController:rejectReservation" type="service_closure" id=".service_locator.UcEu5G6.App\Controller\DashboardController::rejectReservation()"/>
         <argument key="App\Controller\FreelancerController:index" type="service_closure" id=".service_locator.MtXMf3E.App\Controller\FreelancerController::index()"/>
         <argument key="App\Controller\FreelancerController:show" type="service_closure" id=".service_locator.iws40It.App\Controller\FreelancerController::show()"/>
         <argument key="App\Controller\GoogleController:connect" type="service_closure" id=".service_locator.wLvy5Az.App\Controller\GoogleController::connect()"/>
@@ -7572,7 +7647,10 @@
         <argument key="App\Controller\JobController:list" type="service_closure" id=".service_locator.wMGz0tS.App\Controller\JobController::list()"/>
         <argument key="App\Controller\JobController:create" type="service_closure" id=".service_locator.7lCRvYA.App\Controller\JobController::create()"/>
         <argument key="App\Controller\JobController:delete" type="service_closure" id=".service_locator.wXxTKMw.App\Controller\JobController::delete()"/>
-        <argument key="App\Controller\JobController:detail" type="service_closure" id=".service_locator.nU509g2.App\Controller\JobController::detail()"/>
+        <argument key="App\Controller\JobController:detail" type="service_closure" id=".service_locator.wXxTKMw.App\Controller\JobController::detail()"/>
+        <argument key="App\Controller\JobController:apply" type="service_closure" id=".service_locator.qZVw0LA.App\Controller\JobController::apply()"/>
+        <argument key="App\Controller\JobController:acceptApplication" type="service_closure" id=".service_locator.GE3yhlf.App\Controller\JobController::acceptApplication()"/>
+        <argument key="App\Controller\JobController:rejectApplication" type="service_closure" id=".service_locator.GE3yhlf.App\Controller\JobController::rejectApplication()"/>
         <argument key="App\Controller\LoginController:login" type="service_closure" id=".service_locator.3QECKYg.App\Controller\LoginController::login()"/>
         <argument key="App\Controller\RegistrationController:register" type="service_closure" id=".service_locator.A84gqGd.App\Controller\RegistrationController::register()"/>
         <argument key="App\Controller\ServiceController:list" type="service_closure" id=".service_locator..wKp6bH.App\Controller\ServiceController::list()"/>
@@ -7670,9 +7748,10 @@
       <argument type="service" id="argument_resolver.query_parameter_value_resolver"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.3N69S0l" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.4Z1IjEC" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\JobApplicationType" type="service_closure" id="App\Form\JobApplicationType"/>
         <argument key="App\Form\JobType" type="service_closure" id="App\Form\JobType"/>
         <argument key="App\Form\RegistrationType" type="service_closure" id="App\Form\RegistrationType"/>
         <argument key="App\Form\ReservationType" type="service_closure" id="App\Form\ReservationType"/>
@@ -7694,13 +7773,14 @@
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service_closure" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
       </argument>
     </service>
-    <service id=".service_locator.QU5SNNx" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.Bl8eVqM" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\BadgeRepository" type="service_closure" id="App\Repository\BadgeRepository"/>
         <argument key="App\Repository\CategoryRepository" type="service_closure" id="App\Repository\CategoryRepository"/>
         <argument key="App\Repository\ClientRepository" type="service_closure" id="App\Repository\ClientRepository"/>
         <argument key="App\Repository\FreelancerRepository" type="service_closure" id="App\Repository\FreelancerRepository"/>
+        <argument key="App\Repository\JobApplicationRepository" type="service_closure" id="App\Repository\JobApplicationRepository"/>
         <argument key="App\Repository\JobRepository" type="service_closure" id="App\Repository\JobRepository"/>
         <argument key="App\Repository\ProfileRepository" type="service_closure" id="App\Repository\ProfileRepository"/>
         <argument key="App\Repository\ReservationRepository" type="service_closure" id="App\Repository\ReservationRepository"/>
@@ -7753,6 +7833,10 @@
     </service>
     <service id=".debug.security.voter.security.access.expression_voter" class="Symfony\Component\Security\Core\Authorization\Voter\TraceableVoter">
       <argument type="service" id="security.access.expression_voter"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+    </service>
+    <service id=".debug.security.voter.App\Security\JobApplicationVoter" class="Symfony\Component\Security\Core\Authorization\Voter\TraceableVoter">
+      <argument type="service" id="App\Security\JobApplicationVoter"/>
       <argument type="service" id="debug.event_dispatcher"/>
     </service>
     <service id="security.listener.csrf_protection" class="Symfony\Component\Security\Http\EventListener\CsrfProtectionListener">
@@ -8125,6 +8209,7 @@
         <argument type="service" id=".debug.security.voter.security.access.authenticated_voter"/>
         <argument type="service" id=".debug.security.voter.security.access.role_hierarchy_voter"/>
         <argument type="service" id=".debug.security.voter.security.access.expression_voter"/>
+        <argument type="service" id=".debug.security.voter.App\Security\JobApplicationVoter"/>
       </argument>
       <argument type="service">
         <service class="Symfony\Component\Security\Core\Authorization\Strategy\AffirmativeStrategy">
@@ -9139,7 +9224,7 @@
     <service id="KnpU\OAuth2ClientBundle\Client\Provider\GoogleClient" alias="knpu.oauth2.client.google"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.pRu6x_4" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.a7gPRuZ"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.oGs0Xpg"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.BxSdgVt"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="api_platform.name_converter" alias="api_platform.hydra.name_converter.hydra_prefix"/>
@@ -9227,7 +9312,8 @@
     <service id=".service_locator.G.S73AI" alias=".service_locator.ZAUGEyP"/>
     <service id=".service_locator.hYW3jgd" alias=".service_locator.zroWs1n"/>
     <service id=".service_locator.rafC_H5" alias=".service_locator.0jUX5FG"/>
-    <service id=".service_locator.OrTVl_j" alias=".service_locator.NAsPpDp"/>
+    <service id=".service_locator.cqzMa6F" alias=".service_locator.jWLPRyP"/>
+    <service id=".service_locator.EKDD1lM" alias=".service_locator.UcEu5G6"/>
     <service id=".service_locator.WMsGd7p" alias=".service_locator.MtXMf3E"/>
     <service id=".service_locator.3v89r2i" alias=".service_locator.iws40It"/>
     <service id=".service_locator.uH1Gyvk" alias=".service_locator.wLvy5Az"/>
@@ -9235,7 +9321,8 @@
     <service id=".service_locator.uUf6Ebx" alias=".service_locator.wMGz0tS"/>
     <service id=".service_locator.6Av3myi" alias=".service_locator.7lCRvYA"/>
     <service id=".service_locator.4syq3vS" alias=".service_locator.wXxTKMw"/>
-    <service id=".service_locator.rwvUGV_" alias=".service_locator.nU509g2"/>
+    <service id=".service_locator.rqmXLNM" alias=".service_locator.qZVw0LA"/>
+    <service id=".service_locator.hDn0twz" alias=".service_locator.GE3yhlf"/>
     <service id=".service_locator.Nrz07Zz" alias=".service_locator.3QECKYg"/>
     <service id=".service_locator.navQAVH" alias=".service_locator.A84gqGd"/>
     <service id=".service_locator.te1JX0P" alias=".service_locator..wKp6bH"/>

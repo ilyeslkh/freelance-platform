@@ -41,6 +41,10 @@ services:
     arguments: ["@serializer.normalizer.object"]
     tags: ["serializer.normalizer"]
 
+  App\Security\JobApplicationVoter:
+    tags:
+      - { name: security.voter }
+
   # Autres services de votre application
   App\:
     resource: "../../src/"
