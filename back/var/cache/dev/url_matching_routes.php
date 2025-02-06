@@ -60,149 +60,125 @@ return [
                                     .'|(?:\\.([^/]++))?(?'
                                         .'|(*:392)'
                                     .')'
-                                    .'|/(?'
-                                        .'|([^/\\.]++)(?:\\.([^/]++))?(?'
-                                            .'|(*:433)'
-                                        .')'
-                                        .'|([^/]++)(?'
-                                            .'|(*:453)'
-                                        .')'
+                                    .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
+                                        .'|(*:430)'
                                     .')'
-                                    .'|(*:463)'
                                 .')'
                             .')'
                             .'|validation_errors/([^/]++)(?'
-                                .'|(*:502)'
+                                .'|(*:470)'
                             .')'
                             .'|badges(?'
-                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:546)'
+                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:514)'
                                 .'|(?:\\.([^/]++))?(?'
-                                    .'|(*:572)'
+                                    .'|(*:540)'
                                 .')'
                                 .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                    .'|(*:610)'
+                                    .'|(*:578)'
                                 .')'
                             .')'
                             .'|freelancers(?'
-                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:660)'
+                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:628)'
                                 .'|(?:\\.([^/]++))?(?'
-                                    .'|(*:686)'
-                                .')'
-                                .'|/(?'
-                                    .'|([^/\\.]++)(?:\\.([^/]++))?(?'
-                                        .'|(*:727)'
-                                    .')'
-                                    .'|([^/]++)(?'
-                                        .'|(*:747)'
-                                    .')'
-                                .')'
-                                .'|(*:757)'
-                            .')'
-                            .'|jobs(?'
-                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:799)'
-                                .'|(?:\\.([^/]++))?(?'
-                                    .'|(*:825)'
-                                .')'
-                                .'|/(?'
-                                    .'|([^/\\.]++)(?:\\.([^/]++))?(?'
-                                        .'|(*:866)'
-                                    .')'
-                                    .'|([^/]++)(?'
-                                        .'|(*:886)'
-                                    .')'
-                                .')'
-                                .'|(*:896)'
-                            .')'
-                            .'|profiles(?'
-                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:942)'
-                                .'|(?:\\.([^/]++))?(?'
-                                    .'|(*:968)'
+                                    .'|(*:654)'
                                 .')'
                                 .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                    .'|(*:1006)'
+                                    .'|(*:692)'
+                                .')'
+                            .')'
+                            .'|jobs(?'
+                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:735)'
+                                .'|(?:\\.([^/]++))?(?'
+                                    .'|(*:761)'
+                                .')'
+                                .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
+                                    .'|(*:799)'
+                                .')'
+                            .')'
+                            .'|profiles(?'
+                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:846)'
+                                .'|(?:\\.([^/]++))?(?'
+                                    .'|(*:872)'
+                                .')'
+                                .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
+                                    .'|(*:910)'
                                 .')'
                             .')'
                             .'|reviews(?'
-                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:1053)'
+                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:956)'
                                 .'|(?:\\.([^/]++))?(?'
-                                    .'|(*:1080)'
+                                    .'|(*:982)'
                                 .')'
                                 .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                    .'|(*:1119)'
+                                    .'|(*:1020)'
                                 .')'
                             .')'
                             .'|s(?'
                                 .'|ervices(?'
-                                    .'|/([^/\\.]++)(?:\\.([^/]++))?(*:1170)'
+                                    .'|/([^/\\.]++)(?:\\.([^/]++))?(*:1071)'
                                     .'|(?:\\.([^/]++))?(?'
-                                        .'|(*:1197)'
+                                        .'|(*:1098)'
                                     .')'
-                                    .'|/(?'
-                                        .'|([^/\\.]++)(?:\\.([^/]++))?(?'
-                                            .'|(*:1239)'
-                                        .')'
-                                        .'|([^/]++)(?'
-                                            .'|(*:1260)'
-                                        .')'
+                                    .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
+                                        .'|(*:1137)'
                                     .')'
-                                    .'|(*:1271)'
                                 .')'
                                 .'|kills(?'
-                                    .'|/([^/\\.]++)(?:\\.([^/]++))?(*:1315)'
+                                    .'|/([^/\\.]++)(?:\\.([^/]++))?(*:1182)'
                                     .'|(?:\\.([^/]++))?(?'
-                                        .'|(*:1342)'
+                                        .'|(*:1209)'
                                     .')'
                                     .'|/(?'
                                         .'|([^/\\.]++)(?:\\.([^/]++))?(?'
-                                            .'|(*:1384)'
+                                            .'|(*:1251)'
                                         .')'
                                         .'|([^/]++)(?'
-                                            .'|(*:1405)'
+                                            .'|(*:1272)'
                                         .')'
                                     .')'
-                                    .'|(*:1416)'
+                                    .'|(*:1283)'
                                 .')'
                             .')'
                             .'|users(?'
-                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:1461)'
+                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:1328)'
                                 .'|(?:\\.([^/]++))?(?'
-                                    .'|(*:1488)'
+                                    .'|(*:1355)'
                                 .')'
                                 .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                    .'|(*:1527)'
+                                    .'|(*:1394)'
                                 .')'
                             .')'
                         .')'
                     .')'
-                    .'|dmin/services/delete/([^/]++)(*:1569)'
+                    .'|dmin/services/delete/([^/]++)(*:1436)'
                 .')'
-                .'|/_error/(\\d+)(?:\\.([^/]++))?(*:1607)'
+                .'|/_error/(\\d+)(?:\\.([^/]++))?(*:1474)'
                 .'|/c(?'
-                    .'|ategories/([^/]++)/services(*:1648)'
-                    .'|lient/([^/]++)(*:1671)'
+                    .'|ategories/([^/]++)/services(*:1515)'
+                    .'|lient/([^/]++)(*:1538)'
                 .')'
                 .'|/reservation/([^/]++)/(?'
-                    .'|accept(*:1712)'
-                    .'|reject(*:1727)'
+                    .'|accept(*:1579)'
+                    .'|reject(*:1594)'
                 .')'
-                .'|/freelancer/([^/]++)(*:1757)'
+                .'|/freelancer/([^/]++)(*:1624)'
                 .'|/jobs/(?'
-                    .'|(\\d+)/delete(*:1787)'
-                    .'|(\\d+)(*:1801)'
-                    .'|([^/]++)/apply(*:1824)'
+                    .'|(\\d+)/delete(*:1654)'
+                    .'|(\\d+)(*:1668)'
+                    .'|([^/]++)/apply(*:1691)'
                     .'|application/([^/]++)/(?'
-                        .'|accept(*:1863)'
-                        .'|reject(*:1878)'
+                        .'|accept(*:1730)'
+                        .'|reject(*:1745)'
                     .')'
                 .')'
                 .'|/service/(?'
-                    .'|delete/(\\d+)(*:1913)'
+                    .'|delete/(\\d+)(*:1780)'
                     .'|([^/]++)/(?'
-                        .'|reserve(*:1941)'
-                        .'|checkout(*:1958)'
+                        .'|reserve(*:1808)'
+                        .'|checkout(*:1825)'
                     .')'
-                    .'|(\\d+)(*:1973)'
-                    .'|edit/(\\d+)(*:1992)'
+                    .'|(\\d+)(*:1840)'
+                    .'|edit/(\\d+)(*:1859)'
                 .')'
             .')/?$}sDu',
     ],
@@ -227,149 +203,113 @@ return [
             [['_route' => '_api_/clients{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Client', '_api_operation_name' => '_api_/clients{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => '_api_/clients{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Client', '_api_operation_name' => '_api_/clients{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        433 => [
+        430 => [
             [['_route' => '_api_/clients/{id}{._format}_patch', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Client', '_api_operation_name' => '_api_/clients/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
             [['_route' => '_api_/clients/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Client', '_api_operation_name' => '_api_/clients/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
         ],
-        453 => [
-            [['_route' => 'app_clientapi_show', '_controller' => 'App\\Controller\\ClientApiController::show'], ['id'], ['GET' => 0], null, false, true, null],
-            [['_route' => 'app_clientapi_update', '_controller' => 'App\\Controller\\ClientApiController::update'], ['id'], ['PUT' => 0], null, false, true, null],
-            [['_route' => 'app_clientapi_delete', '_controller' => 'App\\Controller\\ClientApiController::delete'], ['id'], ['DELETE' => 0], null, false, true, null],
-        ],
-        463 => [
-            [['_route' => 'app_clientapi_index', '_controller' => 'App\\Controller\\ClientApiController::index'], [], ['GET' => 0], null, true, false, null],
-            [['_route' => 'app_clientapi_create', '_controller' => 'App\\Controller\\ClientApiController::create'], [], ['POST' => 0], null, true, false, null],
-        ],
-        502 => [
+        470 => [
             [['_route' => '_api_validation_errors_problem', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'ApiPlatform\\Validator\\Exception\\ValidationException', '_api_operation_name' => '_api_validation_errors_problem'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => '_api_validation_errors_hydra', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'ApiPlatform\\Validator\\Exception\\ValidationException', '_api_operation_name' => '_api_validation_errors_hydra'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => '_api_validation_errors_jsonapi', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'ApiPlatform\\Validator\\Exception\\ValidationException', '_api_operation_name' => '_api_validation_errors_jsonapi'], ['id'], ['GET' => 0], null, false, true, null],
         ],
-        546 => [[['_route' => '_api_/badges/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Badge', '_api_operation_name' => '_api_/badges/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        572 => [
+        514 => [[['_route' => '_api_/badges/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Badge', '_api_operation_name' => '_api_/badges/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        540 => [
             [['_route' => '_api_/badges{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Badge', '_api_operation_name' => '_api_/badges{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => '_api_/badges{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Badge', '_api_operation_name' => '_api_/badges{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        610 => [
+        578 => [
             [['_route' => '_api_/badges/{id}{._format}_patch', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Badge', '_api_operation_name' => '_api_/badges/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
             [['_route' => '_api_/badges/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Badge', '_api_operation_name' => '_api_/badges/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
         ],
-        660 => [[['_route' => '_api_/freelancers/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Freelancer', '_api_operation_name' => '_api_/freelancers/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        686 => [
+        628 => [[['_route' => '_api_/freelancers/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Freelancer', '_api_operation_name' => '_api_/freelancers/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        654 => [
             [['_route' => '_api_/freelancers{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Freelancer', '_api_operation_name' => '_api_/freelancers{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => '_api_/freelancers{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Freelancer', '_api_operation_name' => '_api_/freelancers{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        727 => [
+        692 => [
             [['_route' => '_api_/freelancers/{id}{._format}_patch', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Freelancer', '_api_operation_name' => '_api_/freelancers/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
             [['_route' => '_api_/freelancers/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Freelancer', '_api_operation_name' => '_api_/freelancers/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
         ],
-        747 => [
-            [['_route' => 'app_freelancerapi_show', '_controller' => 'App\\Controller\\FreelancerApiController::show'], ['id'], ['GET' => 0], null, false, true, null],
-            [['_route' => 'app_freelancerapi_update', '_controller' => 'App\\Controller\\FreelancerApiController::update'], ['id'], ['PUT' => 0], null, false, true, null],
-            [['_route' => 'app_freelancerapi_delete', '_controller' => 'App\\Controller\\FreelancerApiController::delete'], ['id'], ['DELETE' => 0], null, false, true, null],
-        ],
-        757 => [
-            [['_route' => 'app_freelancerapi_index', '_controller' => 'App\\Controller\\FreelancerApiController::index'], [], ['GET' => 0], null, true, false, null],
-            [['_route' => 'app_freelancerapi_create', '_controller' => 'App\\Controller\\FreelancerApiController::create'], [], ['POST' => 0], null, true, false, null],
-        ],
-        799 => [[['_route' => '_api_/jobs/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Job', '_api_operation_name' => '_api_/jobs/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        825 => [
+        735 => [[['_route' => '_api_/jobs/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Job', '_api_operation_name' => '_api_/jobs/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        761 => [
             [['_route' => '_api_/jobs{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Job', '_api_operation_name' => '_api_/jobs{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => '_api_/jobs{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Job', '_api_operation_name' => '_api_/jobs{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        866 => [
+        799 => [
             [['_route' => '_api_/jobs/{id}{._format}_patch', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Job', '_api_operation_name' => '_api_/jobs/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
             [['_route' => '_api_/jobs/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Job', '_api_operation_name' => '_api_/jobs/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
         ],
-        886 => [
-            [['_route' => 'app_jobapi_show', '_controller' => 'App\\Controller\\JobApiController::show'], ['id'], ['GET' => 0], null, false, true, null],
-            [['_route' => 'app_jobapi_update', '_controller' => 'App\\Controller\\JobApiController::update'], ['id'], ['PUT' => 0], null, false, true, null],
-            [['_route' => 'app_jobapi_delete', '_controller' => 'App\\Controller\\JobApiController::delete'], ['id'], ['DELETE' => 0], null, false, true, null],
-        ],
-        896 => [
-            [['_route' => 'app_jobapi_index', '_controller' => 'App\\Controller\\JobApiController::index'], [], ['GET' => 0], null, true, false, null],
-            [['_route' => 'app_jobapi_create', '_controller' => 'App\\Controller\\JobApiController::create'], [], ['POST' => 0], null, true, false, null],
-        ],
-        942 => [[['_route' => '_api_/profiles/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Profile', '_api_operation_name' => '_api_/profiles/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        968 => [
+        846 => [[['_route' => '_api_/profiles/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Profile', '_api_operation_name' => '_api_/profiles/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        872 => [
             [['_route' => '_api_/profiles{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Profile', '_api_operation_name' => '_api_/profiles{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => '_api_/profiles{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Profile', '_api_operation_name' => '_api_/profiles{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        1006 => [
+        910 => [
             [['_route' => '_api_/profiles/{id}{._format}_patch', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Profile', '_api_operation_name' => '_api_/profiles/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
             [['_route' => '_api_/profiles/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Profile', '_api_operation_name' => '_api_/profiles/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
         ],
-        1053 => [[['_route' => '_api_/reviews/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Review', '_api_operation_name' => '_api_/reviews/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        1080 => [
+        956 => [[['_route' => '_api_/reviews/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Review', '_api_operation_name' => '_api_/reviews/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        982 => [
             [['_route' => '_api_/reviews{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Review', '_api_operation_name' => '_api_/reviews{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => '_api_/reviews{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Review', '_api_operation_name' => '_api_/reviews{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        1119 => [
+        1020 => [
             [['_route' => '_api_/reviews/{id}{._format}_patch', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Review', '_api_operation_name' => '_api_/reviews/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
             [['_route' => '_api_/reviews/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Review', '_api_operation_name' => '_api_/reviews/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
         ],
-        1170 => [[['_route' => '_api_/services/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Service', '_api_operation_name' => '_api_/services/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        1197 => [
+        1071 => [[['_route' => '_api_/services/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Service', '_api_operation_name' => '_api_/services/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        1098 => [
             [['_route' => '_api_/services{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Service', '_api_operation_name' => '_api_/services{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => '_api_/services{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Service', '_api_operation_name' => '_api_/services{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        1239 => [
+        1137 => [
             [['_route' => '_api_/services/{id}{._format}_patch', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Service', '_api_operation_name' => '_api_/services/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
             [['_route' => '_api_/services/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Service', '_api_operation_name' => '_api_/services/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
         ],
-        1260 => [
-            [['_route' => 'app_serviceapi_show', '_controller' => 'App\\Controller\\ServiceApiController::show'], ['id'], ['GET' => 0], null, false, true, null],
-            [['_route' => 'app_serviceapi_update', '_controller' => 'App\\Controller\\ServiceApiController::update'], ['id'], ['PUT' => 0], null, false, true, null],
-            [['_route' => 'app_serviceapi_delete', '_controller' => 'App\\Controller\\ServiceApiController::delete'], ['id'], ['DELETE' => 0], null, false, true, null],
-        ],
-        1271 => [
-            [['_route' => 'app_serviceapi_index', '_controller' => 'App\\Controller\\ServiceApiController::index'], [], ['GET' => 0], null, true, false, null],
-            [['_route' => 'app_serviceapi_create', '_controller' => 'App\\Controller\\ServiceApiController::create'], [], ['POST' => 0], null, true, false, null],
-        ],
-        1315 => [[['_route' => '_api_/skills/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Skill', '_api_operation_name' => '_api_/skills/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        1342 => [
+        1182 => [[['_route' => '_api_/skills/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Skill', '_api_operation_name' => '_api_/skills/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        1209 => [
             [['_route' => '_api_/skills{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Skill', '_api_operation_name' => '_api_/skills{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => '_api_/skills{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Skill', '_api_operation_name' => '_api_/skills{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        1384 => [
+        1251 => [
             [['_route' => '_api_/skills/{id}{._format}_patch', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Skill', '_api_operation_name' => '_api_/skills/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
             [['_route' => '_api_/skills/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\Skill', '_api_operation_name' => '_api_/skills/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
         ],
-        1405 => [
+        1272 => [
             [['_route' => 'app_skillapi_show', '_controller' => 'App\\Controller\\SkillApiController::show'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'app_skillapi_update', '_controller' => 'App\\Controller\\SkillApiController::update'], ['id'], ['PUT' => 0], null, false, true, null],
             [['_route' => 'app_skillapi_delete', '_controller' => 'App\\Controller\\SkillApiController::delete'], ['id'], ['DELETE' => 0], null, false, true, null],
         ],
-        1416 => [
+        1283 => [
             [['_route' => 'app_skillapi_index', '_controller' => 'App\\Controller\\SkillApiController::index'], [], ['GET' => 0], null, true, false, null],
             [['_route' => 'app_skillapi_create', '_controller' => 'App\\Controller\\SkillApiController::create'], [], ['POST' => 0], null, true, false, null],
         ],
-        1461 => [[['_route' => '_api_/users/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_operation_name' => '_api_/users/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        1488 => [
+        1328 => [[['_route' => '_api_/users/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_operation_name' => '_api_/users/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        1355 => [
             [['_route' => '_api_/users{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_operation_name' => '_api_/users{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => '_api_/users{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_operation_name' => '_api_/users{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        1527 => [
+        1394 => [
             [['_route' => '_api_/users/{id}{._format}_patch', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_operation_name' => '_api_/users/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
             [['_route' => '_api_/users/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_operation_name' => '_api_/users/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
         ],
-        1569 => [[['_route' => 'admin_delete_service', '_controller' => 'App\\Controller\\AdminController::deleteService'], ['id'], ['POST' => 0], null, false, true, null]],
-        1607 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
-        1648 => [[['_route' => 'category_services', '_controller' => 'App\\Controller\\CategoryController::services'], ['id'], ['GET' => 0], null, false, false, null]],
-        1671 => [[['_route' => 'client_detail', '_controller' => 'App\\Controller\\ClientController::show'], ['id'], null, null, false, true, null]],
-        1712 => [[['_route' => 'reservation_accept', '_controller' => 'App\\Controller\\DashboardController::acceptReservation'], ['id'], ['POST' => 0], null, false, false, null]],
-        1727 => [[['_route' => 'reservation_reject', '_controller' => 'App\\Controller\\DashboardController::rejectReservation'], ['id'], ['POST' => 0], null, false, false, null]],
-        1757 => [[['_route' => 'freelancer_detail', '_controller' => 'App\\Controller\\FreelancerController::show'], ['id'], null, null, false, true, null]],
-        1787 => [[['_route' => 'job_delete', '_controller' => 'App\\Controller\\JobController::delete'], ['id'], ['POST' => 0], null, false, false, null]],
-        1801 => [[['_route' => 'job_detail', '_controller' => 'App\\Controller\\JobController::detail'], ['id'], null, null, false, true, null]],
-        1824 => [[['_route' => 'job_apply', '_controller' => 'App\\Controller\\JobController::apply'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1863 => [[['_route' => 'job_application_accept', '_controller' => 'App\\Controller\\JobController::acceptApplication'], ['id'], ['POST' => 0], null, false, false, null]],
-        1878 => [[['_route' => 'job_application_reject', '_controller' => 'App\\Controller\\JobController::rejectApplication'], ['id'], ['POST' => 0], null, false, false, null]],
-        1913 => [[['_route' => 'service_delete', '_controller' => 'App\\Controller\\ServiceController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        1941 => [[['_route' => 'service_reserve', '_controller' => 'App\\Controller\\ServiceController::reserve'], ['id'], null, null, false, false, null]],
-        1958 => [[['_route' => 'service_checkout', '_controller' => 'App\\Controller\\ServiceController::checkout'], ['id'], null, null, false, false, null]],
-        1973 => [[['_route' => 'service_detail', '_controller' => 'App\\Controller\\ServiceDetailController::detail'], ['id'], null, null, false, true, null]],
-        1992 => [
+        1436 => [[['_route' => 'admin_delete_service', '_controller' => 'App\\Controller\\AdminController::deleteService'], ['id'], ['POST' => 0], null, false, true, null]],
+        1474 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
+        1515 => [[['_route' => 'category_services', '_controller' => 'App\\Controller\\CategoryController::services'], ['id'], ['GET' => 0], null, false, false, null]],
+        1538 => [[['_route' => 'client_detail', '_controller' => 'App\\Controller\\ClientController::show'], ['id'], null, null, false, true, null]],
+        1579 => [[['_route' => 'reservation_accept', '_controller' => 'App\\Controller\\DashboardController::acceptReservation'], ['id'], ['POST' => 0], null, false, false, null]],
+        1594 => [[['_route' => 'reservation_reject', '_controller' => 'App\\Controller\\DashboardController::rejectReservation'], ['id'], ['POST' => 0], null, false, false, null]],
+        1624 => [[['_route' => 'freelancer_detail', '_controller' => 'App\\Controller\\FreelancerController::show'], ['id'], null, null, false, true, null]],
+        1654 => [[['_route' => 'job_delete', '_controller' => 'App\\Controller\\JobController::delete'], ['id'], ['POST' => 0], null, false, false, null]],
+        1668 => [[['_route' => 'job_detail', '_controller' => 'App\\Controller\\JobController::detail'], ['id'], null, null, false, true, null]],
+        1691 => [[['_route' => 'job_apply', '_controller' => 'App\\Controller\\JobController::apply'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1730 => [[['_route' => 'job_application_accept', '_controller' => 'App\\Controller\\JobController::acceptApplication'], ['id'], ['POST' => 0], null, false, false, null]],
+        1745 => [[['_route' => 'job_application_reject', '_controller' => 'App\\Controller\\JobController::rejectApplication'], ['id'], ['POST' => 0], null, false, false, null]],
+        1780 => [[['_route' => 'service_delete', '_controller' => 'App\\Controller\\ServiceController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        1808 => [[['_route' => 'service_reserve', '_controller' => 'App\\Controller\\ServiceController::reserve'], ['id'], null, null, false, false, null]],
+        1825 => [[['_route' => 'service_checkout', '_controller' => 'App\\Controller\\ServiceController::checkout'], ['id'], null, null, false, false, null]],
+        1840 => [[['_route' => 'service_detail', '_controller' => 'App\\Controller\\ServiceDetailController::detail'], ['id'], null, null, false, true, null]],
+        1859 => [
             [['_route' => 'service_edit', '_controller' => 'App\\Controller\\ServiceEditController::edit'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

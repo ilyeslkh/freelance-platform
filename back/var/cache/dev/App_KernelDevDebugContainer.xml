@@ -455,10 +455,6 @@
         <argument type="service" id=".service_locator.ZyP9f7K.App\Controller\CategoryController"/>
       </call>
     </service>
-    <service id="App\Controller\ClientApiController" class="App\Controller\ClientApiController" autowire="true" autoconfigure="true">
-      <argument type="service" id="App\Repository\ClientRepository"/>
-      <argument type="service" id="doctrine.orm.default_entity_manager"/>
-    </service>
     <service id="App\Controller\ClientController" class="App\Controller\ClientController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -472,10 +468,6 @@
       <call method="setContainer">
         <argument type="service" id=".service_locator.ZyP9f7K.App\Controller\DashboardController"/>
       </call>
-    </service>
-    <service id="App\Controller\FreelancerApiController" class="App\Controller\FreelancerApiController" autowire="true" autoconfigure="true">
-      <argument type="service" id="App\Repository\FreelancerRepository"/>
-      <argument type="service" id="doctrine.orm.default_entity_manager"/>
     </service>
     <service id="App\Controller\FreelancerController" class="App\Controller\FreelancerController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
@@ -497,10 +489,6 @@
       <call method="setContainer">
         <argument type="service" id=".service_locator.ZyP9f7K.App\Controller\HomeController"/>
       </call>
-    </service>
-    <service id="App\Controller\JobApiController" class="App\Controller\JobApiController" autowire="true" autoconfigure="true">
-      <argument type="service" id="App\Repository\JobRepository"/>
-      <argument type="service" id="doctrine.orm.default_entity_manager"/>
     </service>
     <service id="App\Controller\JobController" class="App\Controller\JobController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
@@ -536,10 +524,6 @@
       <call method="setContainer">
         <argument type="service" id=".service_locator.ZyP9f7K.App\Controller\RegistrationController"/>
       </call>
-    </service>
-    <service id="App\Controller\ServiceApiController" class="App\Controller\ServiceApiController" autowire="true" autoconfigure="true">
-      <argument type="service" id="App\Repository\ServiceRepository"/>
-      <argument type="service" id="doctrine.orm.default_entity_manager"/>
     </service>
     <service id="App\Controller\ServiceController" class="App\Controller\ServiceController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
